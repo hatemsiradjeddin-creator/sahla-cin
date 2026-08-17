@@ -82,7 +82,7 @@ function MovieCard({ movie }: { movie: Movie }) {
 
 function Index() {
   const [query, setQuery] = useState("");
-  const [city, setCity] = useState(cities[0]);
+  const [city, setCity] = useState(cities[0]!);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

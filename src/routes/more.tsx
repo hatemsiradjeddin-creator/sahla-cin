@@ -52,7 +52,7 @@ const errorTypes = [
 
 function MorePage() {
   const [open, setOpen] = useState(false);
-  const [type, setType] = useState(errorTypes[0]);
+  const [type, setType] = useState(errorTypes[0]!);
   const [message, setMessage] = useState("");
 
   function submit(e: React.FormEvent) {
