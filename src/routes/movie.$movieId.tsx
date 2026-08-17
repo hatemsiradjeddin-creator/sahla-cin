@@ -110,7 +110,7 @@ function MovieDetail() {
         )}
       </div>
 
-      <main className="mx-auto -mt-10 max-w-2xl px-4">
+      <main className="relative z-10 mx-auto -mt-12 max-w-2xl px-4">
         <h1 className="text-2xl font-bold leading-tight">{movie.title}</h1>
         <p className="arabic mt-1 text-lg text-muted-foreground" dir="rtl">
           {movie.titleAr}
