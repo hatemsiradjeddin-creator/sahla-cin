@@ -1,3 +1,5 @@
+import leTempsDaimerPoster from "@/assets/le-temps-daimer.jpg";
+
 export type Movie = {
   id: string;
   title: string;
@@ -55,7 +57,7 @@ export const movies: Movie[] = [
     rating: 8.1,
     duration: 105,
     genres: ["Drame", "Romance"],
-    poster: "https://image.tmdb.org/t/p/w500/8xV47NDrjdZDpkVcCFqkdHa3T0C.jpg",
+    poster: leTempsDaimerPoster,
     algerian: true,
     synopsis:
       "Une fresque intime et bouleversante sur l'amour et la mémoire, portée par un regard algérien sensible sur les liens familiaux, l'exil et le passage du temps.",
