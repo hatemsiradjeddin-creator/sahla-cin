@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CinemasRouteImport } from './routes/cinemas'
 import { Route as CompteRouteImport } from './routes/compte'
+import { Route as ContributeurRouteImport } from './routes/contributeur'
 import { Route as MoreRouteImport } from './routes/more'
 import { Route as TicketsRouteImport } from './routes/tickets'
 import { Route as CinemaCinemaIdRouteImport } from './routes/cinema.$cinemaId'
@@ -38,6 +39,11 @@ const CinemasRoute = CinemasRouteImport.update({
 const CompteRoute = CompteRouteImport.update({
   id: '/compte',
   path: '/compte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContributeurRoute = ContributeurRouteImport.update({
+  id: '/contributeur',
+  path: '/contributeur',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MoreRoute = MoreRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/cinemas': typeof CinemasRoute
   '/compte': typeof CompteRoute
+  '/contributeur': typeof ContributeurRoute
   '/more': typeof MoreRoute
   '/tickets': typeof TicketsRoute
   '/cinema/$cinemaId': typeof CinemaCinemaIdRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/cinemas': typeof CinemasRoute
   '/compte': typeof CompteRoute
+  '/contributeur': typeof ContributeurRoute
   '/more': typeof MoreRoute
   '/tickets': typeof TicketsRoute
   '/cinema/$cinemaId': typeof CinemaCinemaIdRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/cinemas': typeof CinemasRoute
   '/compte': typeof CompteRoute
+  '/contributeur': typeof ContributeurRoute
   '/more': typeof MoreRoute
   '/tickets': typeof TicketsRoute
   '/cinema/$cinemaId': typeof CinemaCinemaIdRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/cinemas'
     | '/compte'
+    | '/contributeur'
     | '/more'
     | '/tickets'
     | '/cinema/$cinemaId'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/cinemas'
     | '/compte'
+    | '/contributeur'
     | '/more'
     | '/tickets'
     | '/cinema/$cinemaId'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/cinemas'
     | '/compte'
+    | '/contributeur'
     | '/more'
     | '/tickets'
     | '/cinema/$cinemaId'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CinemasRoute: typeof CinemasRoute
   CompteRoute: typeof CompteRoute
+  ContributeurRoute: typeof ContributeurRoute
   MoreRoute: typeof MoreRoute
   TicketsRoute: typeof TicketsRoute
   CinemaCinemaIdRoute: typeof CinemaCinemaIdRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/compte'
       fullPath: '/compte'
       preLoaderRoute: typeof CompteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contributeur': {
+      id: '/contributeur'
+      path: '/contributeur'
+      fullPath: '/contributeur'
+      preLoaderRoute: typeof ContributeurRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/more': {
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CinemasRoute: CinemasRoute,
   CompteRoute: CompteRoute,
+  ContributeurRoute: ContributeurRoute,
   MoreRoute: MoreRoute,
   TicketsRoute: TicketsRoute,
   CinemaCinemaIdRoute: CinemaCinemaIdRoute,
