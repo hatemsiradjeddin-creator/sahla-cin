@@ -10,13 +10,31 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CinemasRouteImport } from './routes/cinemas'
+import { Route as CompteRouteImport } from './routes/compte'
+import { Route as ContributeurRouteImport } from './routes/contributeur'
 import { Route as MoreRouteImport } from './routes/more'
+import { Route as TicketsRouteImport } from './routes/tickets'
+import { Route as CinemaCinemaIdRouteImport } from './routes/cinema.$cinemaId'
+import { Route as FilmMovieIdRouteImport } from './routes/film.$movieId'
 import { Route as MovieMovieIdRouteImport } from './routes/movie.$movieId'
+import { Route as ReserverScreeningIdRouteImport } from './routes/reserver.$screeningId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CinemasRoute = CinemasRouteImport.update({
@@ -24,9 +42,34 @@ const CinemasRoute = CinemasRouteImport.update({
   path: '/cinemas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompteRoute = CompteRouteImport.update({
+  id: '/compte',
+  path: '/compte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContributeurRoute = ContributeurRouteImport.update({
+  id: '/contributeur',
+  path: '/contributeur',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MoreRoute = MoreRouteImport.update({
   id: '/more',
   path: '/more',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TicketsRoute = TicketsRouteImport.update({
+  id: '/tickets',
+  path: '/tickets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CinemaCinemaIdRoute = CinemaCinemaIdRouteImport.update({
+  id: '/cinema/$cinemaId',
+  path: '/cinema/$cinemaId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilmMovieIdRoute = FilmMovieIdRouteImport.update({
+  id: '/film/$movieId',
+  path: '/film/$movieId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MovieMovieIdRoute = MovieMovieIdRouteImport.update({
@@ -34,39 +77,113 @@ const MovieMovieIdRoute = MovieMovieIdRouteImport.update({
   path: '/movie/$movieId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReserverScreeningIdRoute = ReserverScreeningIdRouteImport.update({
+  id: '/reserver/$screeningId',
+  path: '/reserver/$screeningId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
   '/cinemas': typeof CinemasRoute
+  '/compte': typeof CompteRoute
+  '/contributeur': typeof ContributeurRoute
   '/more': typeof MoreRoute
+  '/tickets': typeof TicketsRoute
+  '/cinema/$cinemaId': typeof CinemaCinemaIdRoute
+  '/film/$movieId': typeof FilmMovieIdRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
+  '/reserver/$screeningId': typeof ReserverScreeningIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
   '/cinemas': typeof CinemasRoute
+  '/compte': typeof CompteRoute
+  '/contributeur': typeof ContributeurRoute
   '/more': typeof MoreRoute
+  '/tickets': typeof TicketsRoute
+  '/cinema/$cinemaId': typeof CinemaCinemaIdRoute
+  '/film/$movieId': typeof FilmMovieIdRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
+  '/reserver/$screeningId': typeof ReserverScreeningIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/auth': typeof AuthRoute
   '/cinemas': typeof CinemasRoute
+  '/compte': typeof CompteRoute
+  '/contributeur': typeof ContributeurRoute
   '/more': typeof MoreRoute
+  '/tickets': typeof TicketsRoute
+  '/cinema/$cinemaId': typeof CinemaCinemaIdRoute
+  '/film/$movieId': typeof FilmMovieIdRoute
   '/movie/$movieId': typeof MovieMovieIdRoute
+  '/reserver/$screeningId': typeof ReserverScreeningIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cinemas' | '/more' | '/movie/$movieId'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/auth'
+    | '/cinemas'
+    | '/compte'
+    | '/contributeur'
+    | '/more'
+    | '/tickets'
+    | '/cinema/$cinemaId'
+    | '/film/$movieId'
+    | '/movie/$movieId'
+    | '/reserver/$screeningId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cinemas' | '/more' | '/movie/$movieId'
-  id: '__root__' | '/' | '/cinemas' | '/more' | '/movie/$movieId'
+  to:
+    | '/'
+    | '/admin'
+    | '/auth'
+    | '/cinemas'
+    | '/compte'
+    | '/contributeur'
+    | '/more'
+    | '/tickets'
+    | '/cinema/$cinemaId'
+    | '/film/$movieId'
+    | '/movie/$movieId'
+    | '/reserver/$screeningId'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/auth'
+    | '/cinemas'
+    | '/compte'
+    | '/contributeur'
+    | '/more'
+    | '/tickets'
+    | '/cinema/$cinemaId'
+    | '/film/$movieId'
+    | '/movie/$movieId'
+    | '/reserver/$screeningId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  AuthRoute: typeof AuthRoute
   CinemasRoute: typeof CinemasRoute
+  CompteRoute: typeof CompteRoute
+  ContributeurRoute: typeof ContributeurRoute
   MoreRoute: typeof MoreRoute
+  TicketsRoute: typeof TicketsRoute
+  CinemaCinemaIdRoute: typeof CinemaCinemaIdRoute
+  FilmMovieIdRoute: typeof FilmMovieIdRoute
   MovieMovieIdRoute: typeof MovieMovieIdRoute
+  ReserverScreeningIdRoute: typeof ReserverScreeningIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -78,11 +195,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cinemas': {
       id: '/cinemas'
       path: '/cinemas'
       fullPath: '/cinemas'
       preLoaderRoute: typeof CinemasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compte': {
+      id: '/compte'
+      path: '/compte'
+      fullPath: '/compte'
+      preLoaderRoute: typeof CompteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contributeur': {
+      id: '/contributeur'
+      path: '/contributeur'
+      fullPath: '/contributeur'
+      preLoaderRoute: typeof ContributeurRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/more': {
@@ -92,6 +237,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MoreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tickets': {
+      id: '/tickets'
+      path: '/tickets'
+      fullPath: '/tickets'
+      preLoaderRoute: typeof TicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cinema/$cinemaId': {
+      id: '/cinema/$cinemaId'
+      path: '/cinema/$cinemaId'
+      fullPath: '/cinema/$cinemaId'
+      preLoaderRoute: typeof CinemaCinemaIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/film/$movieId': {
+      id: '/film/$movieId'
+      path: '/film/$movieId'
+      fullPath: '/film/$movieId'
+      preLoaderRoute: typeof FilmMovieIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/movie/$movieId': {
       id: '/movie/$movieId'
       path: '/movie/$movieId'
@@ -99,14 +265,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MovieMovieIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reserver/$screeningId': {
+      id: '/reserver/$screeningId'
+      path: '/reserver/$screeningId'
+      fullPath: '/reserver/$screeningId'
+      preLoaderRoute: typeof ReserverScreeningIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  AuthRoute: AuthRoute,
   CinemasRoute: CinemasRoute,
+  CompteRoute: CompteRoute,
+  ContributeurRoute: ContributeurRoute,
   MoreRoute: MoreRoute,
+  TicketsRoute: TicketsRoute,
+  CinemaCinemaIdRoute: CinemaCinemaIdRoute,
+  FilmMovieIdRoute: FilmMovieIdRoute,
   MovieMovieIdRoute: MovieMovieIdRoute,
+  ReserverScreeningIdRoute: ReserverScreeningIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

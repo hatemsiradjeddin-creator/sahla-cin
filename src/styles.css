@@ -165,3 +165,51 @@
 @utility hero-fade {
   background-image: var(--gradient-hero);
 }
+
+/* --- Identité BookCinéDZ : vert profond #145A32 & or #E8B71A --- */
+@theme inline {
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+}
+
+:root, .dark {
+  --radius: 0.9rem;
+  --background: oklch(0.17 0.021 158);
+  --foreground: oklch(0.97 0.008 120);
+  --card: oklch(0.222 0.026 158);
+  --card-foreground: oklch(0.97 0.008 120);
+  --popover: oklch(0.205 0.026 158);
+  --popover-foreground: oklch(0.97 0.008 120);
+  --primary: oklch(0.45 0.104 154);
+  --primary-foreground: oklch(0.98 0.01 120);
+  --secondary: oklch(0.27 0.03 158);
+  --secondary-foreground: oklch(0.97 0.008 120);
+  --muted: oklch(0.27 0.03 158);
+  --muted-foreground: oklch(0.74 0.02 150);
+  --accent: oklch(0.795 0.155 87);
+  --accent-foreground: oklch(0.2 0.03 90);
+  --gold: oklch(0.795 0.155 87);
+  --gold-foreground: oklch(0.2 0.03 90);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.795 0.155 87);
+  --chart-1: oklch(0.45 0.104 154);
+  --chart-2: oklch(0.795 0.155 87);
+  --chart-3: oklch(0.62 0.11 154);
+  --chart-4: oklch(0.7 0.09 200);
+  --chart-5: oklch(0.65 0.2 30);
+  --sidebar: oklch(0.205 0.026 158);
+  --sidebar-foreground: oklch(0.97 0.008 120);
+  --sidebar-primary: oklch(0.45 0.104 154);
+  --sidebar-primary-foreground: oklch(0.98 0.01 120);
+  --sidebar-accent: oklch(0.27 0.03 158);
+  --sidebar-accent-foreground: oklch(0.97 0.008 120);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.795 0.155 87);
+  --gradient-hero: linear-gradient(180deg, oklch(0.795 0.155 87 / 0.18), transparent 70%);
+  --gradient-poster: linear-gradient(to top, oklch(0.17 0.021 158) 5%, transparent 62%);
+  --shadow-glow: 0 8px 30px -10px oklch(0.795 0.155 87 / 0.55);
+  --shadow-card: 0 10px 30px -18px oklch(0 0 0 / 0.9);
+}
