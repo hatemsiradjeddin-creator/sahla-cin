@@ -37,17 +37,24 @@ export type ScreeningFull = {
   };
 };
 
-function unwrap<T>(res: { data: T | null; error: { message: string } | null }): T {
+function unwrap<T>(res: { data: T; error: { message: string } | null }): T {
   if (res.error) throw new Error(res.error.message);
-  return res.data as T;
+  return res.data;
+}
+
+// Pour les requêtes qui renvoient obligatoirement une ligne ou une liste.
+function req<T>(res: { data: T; error: { message: string } | null }): NonNullable<T> {
+  const data = unwrap(res);
+  if (data == null) throw new Error("Donnée introuvable");
+  return data as NonNullable<T>;
 }
 
 export async function fetchCities() {
-  return unwrap(await supabase.from("cities").select("*").order("name"));
+  return req(await supabase.from("cities").select("*").order("name"));
 }
 
 export async function fetchCinemas() {
-  return unwrap(
+  return req(
     await supabase
       .from("cinemas")
       .select("*, city:cities(id, name), halls(id, name, type, capacity)")
@@ -67,7 +74,7 @@ export async function fetchCinema(id: string) {
 
 export async function fetchPublishedScreenings(): Promise<ScreeningFull[]> {
   const nowIso = new Date().toISOString();
-  return unwrap(
+  return req(
     await supabase
       .from("screenings")
       .select(SCREENING_SELECT)
@@ -82,7 +89,7 @@ export async function fetchMovie(id: string) {
 }
 
 export async function fetchMovies() {
-  return unwrap(await supabase.from("movies").select("*").order("title"));
+  return req(await supabase.from("movies").select("*").order("title"));
 }
 
 export async function fetchScreening(id: string): Promise<ScreeningFull | null> {
@@ -92,7 +99,7 @@ export async function fetchScreening(id: string): Promise<ScreeningFull | null> 
 }
 
 export async function fetchSeats(hallId: string) {
-  return unwrap(
+  return req(
     await supabase
       .from("seats")
       .select("*")
@@ -103,7 +110,7 @@ export async function fetchSeats(hallId: string) {
 }
 
 export async function fetchTakenSeatIds(screeningId: string) {
-  const bookings = unwrap(
+  const bookings = req(
     await supabase
       .from("bookings")
       .select("id")
@@ -111,7 +118,7 @@ export async function fetchTakenSeatIds(screeningId: string) {
       .neq("status", "annule"),
   );
   if (!bookings.length) return [] as string[];
-  const rows = unwrap(
+  const rows = req(
     await supabase
       .from("booking_seats")
       .select("seat_id")
@@ -133,7 +140,7 @@ export async function createBooking(input: {
   const userId = userData.user?.id;
   if (!userId) throw new Error("Connexion requise");
 
-  const booking = unwrap(
+  const booking = req(
     await supabase
       .from("bookings")
       .insert({
@@ -155,7 +162,7 @@ export async function createBooking(input: {
   }
 
   const qr = `BCDZ-${booking.id.slice(0, 8).toUpperCase()}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
-  unwrap(
+  req(
     await supabase.from("tickets").insert({ booking_id: booking.id, qr_code: qr }).select("id").single(),
   );
   await supabase.from("bookings").update({ qr_code: qr }).eq("id", booking.id);
@@ -164,7 +171,7 @@ export async function createBooking(input: {
 }
 
 export async function fetchMyTickets() {
-  return unwrap(
+  return req(
     await supabase
       .from("tickets")
       .select(
@@ -180,13 +187,22 @@ export async function fetchMyTickets() {
 export type ScanOutcome = "ok" | "used" | "invalid";
 
 export async function scanTicket(code: string): Promise<{ outcome: ScanOutcome; info?: string }> {
+  type ScanRow = {
+    id: string;
+    scanned: boolean;
+    booking: {
+      screening: { movie: { title: string } | null; hall: { name: string } | null } | null;
+    } | null;
+  };
+
   const ticket = unwrap(
     await supabase
       .from("tickets")
       .select("id, scanned, booking:bookings(screening:screenings(starts_at, movie:movies(title), hall:halls(name)))")
       .eq("qr_code", code.trim())
       .maybeSingle(),
-  );
+  ) as unknown as ScanRow | null;
+
   if (!ticket) return { outcome: "invalid" };
   if (ticket.scanned) return { outcome: "used" };
 
@@ -204,25 +220,23 @@ export async function scanTicket(code: string): Promise<{ outcome: ScanOutcome; 
   if (res.error) throw new Error(res.error.message);
   if (!res.data?.length) return { outcome: "used" };
 
-  const screening = (ticket as unknown as {
-    booking: { screening: { movie: { title: string }; hall: { name: string } } } | null;
-  }).booking?.screening;
-  return {
-    outcome: "ok",
-    info: screening ? `${screening.movie.title} — ${screening.hall.name}` : undefined,
-  };
+  const screening = ticket.booking?.screening;
+  const info = screening?.movie && screening.hall
+    ? `${screening.movie.title} — ${screening.hall.name}`
+    : null;
+  return info ? { outcome: "ok", info } : { outcome: "ok" };
 }
 
 /* --- Contributeur / Admin --- */
 
 export async function fetchMyStaffCinemas() {
-  return unwrap(
+  return req(
     await supabase.from("cinema_staff").select("cinema:cinemas(id, name, halls(id, name, capacity))"),
   );
 }
 
 export async function fetchScreeningsForCinema(cinemaId: string) {
-  return unwrap(
+  return req(
     await supabase
       .from("screenings")
       .select(SCREENING_SELECT)
@@ -268,7 +282,7 @@ export async function deleteScreening(id: string) {
 }
 
 export async function fetchScreeningsByStatus(status: PublishStatus) {
-  return unwrap(
+  return req(
     await supabase.from("screenings").select(SCREENING_SELECT).eq("status", status).order("starts_at"),
   ) as unknown as ScreeningFull[];
 }
@@ -282,10 +296,10 @@ export async function upsertMovie(input: {
   poster_url: string | null;
   age_rating: string | null;
 }) {
-  const res = input.id
+  const res: { data: { id: string } | null; error: { message: string } | null } = input.id
     ? await supabase.from("movies").update(input).eq("id", input.id).select("id").single()
     : await supabase.from("movies").insert(input).select("id").single();
-  return unwrap(res);
+  return req(res);
 }
 
 export async function assignRole(userId: string, role: AppRole) {
