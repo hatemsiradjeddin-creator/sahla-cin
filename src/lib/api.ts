@@ -180,13 +180,22 @@ export async function fetchMyTickets() {
 export type ScanOutcome = "ok" | "used" | "invalid";
 
 export async function scanTicket(code: string): Promise<{ outcome: ScanOutcome; info?: string }> {
+  type ScanRow = {
+    id: string;
+    scanned: boolean;
+    booking: {
+      screening: { movie: { title: string } | null; hall: { name: string } | null } | null;
+    } | null;
+  };
+
   const ticket = unwrap(
     await supabase
       .from("tickets")
       .select("id, scanned, booking:bookings(screening:screenings(starts_at, movie:movies(title), hall:halls(name)))")
       .eq("qr_code", code.trim())
       .maybeSingle(),
-  );
+  ) as unknown as ScanRow | null;
+
   if (!ticket) return { outcome: "invalid" };
   if (ticket.scanned) return { outcome: "used" };
 
@@ -204,13 +213,11 @@ export async function scanTicket(code: string): Promise<{ outcome: ScanOutcome; 
   if (res.error) throw new Error(res.error.message);
   if (!res.data?.length) return { outcome: "used" };
 
-  const screening = (ticket as unknown as {
-    booking: { screening: { movie: { title: string }; hall: { name: string } } } | null;
-  }).booking?.screening;
-  return {
-    outcome: "ok",
-    info: screening ? `${screening.movie.title} — ${screening.hall.name}` : undefined,
-  };
+  const screening = ticket.booking?.screening;
+  const info = screening?.movie && screening.hall
+    ? `${screening.movie.title} — ${screening.hall.name}`
+    : null;
+  return info ? { outcome: "ok", info } : { outcome: "ok" };
 }
 
 /* --- Contributeur / Admin --- */
