@@ -117,7 +117,7 @@ function TicketsPage() {
                   <p className="mt-3 text-[10px] uppercase tracking-widest text-muted-foreground">
                     {t.tickets.ref}
                   </p>
-                  <p className="font-mono text-sm font-bold text-gold">{tk.qr_code}</p>
+                  <p className="font-mono text-sm font-bold text-primary">{tk.qr_code}</p>
                   <p className="mt-2 text-xs text-muted-foreground">{t.tickets.show}</p>
                 </div>
 
@@ -128,7 +128,7 @@ function TicketsPage() {
                   </div>
                   <div className="flex justify-between">
                     <dt className="text-muted-foreground">Total</dt>
-                    <dd className="font-bold text-gold">
+                    <dd className="font-bold text-primary">
                       {tk.booking?.total_amount} {t.common.da}
                     </dd>
                   </div>

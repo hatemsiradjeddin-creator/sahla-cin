@@ -163,7 +163,7 @@ function Admin() {
 
           <TabsContent value="queue" className="mt-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">{t.admin.queue}</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">{t.admin.queue}</h2>
               <Button size="sm" className="rounded-xl" onClick={publishAll}>
                 <CheckCheck className="size-4" />
                 {t.admin.publish}
@@ -203,7 +203,7 @@ function Admin() {
 
           <TabsContent value="movies" className="mt-4 space-y-4">
             <div className="rounded-2xl border border-border bg-card p-4">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">Nouveau film</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">Nouveau film</h2>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 <div className="space-y-1.5 sm:col-span-2">
                   <Label htmlFor="title">Titre</Label>
@@ -283,7 +283,7 @@ function Admin() {
 
           <TabsContent value="roles" className="mt-4">
             <div className="rounded-2xl border border-border bg-card p-4">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">
                 Attribuer un rôle
               </h2>
               <div className="mt-3 space-y-3">

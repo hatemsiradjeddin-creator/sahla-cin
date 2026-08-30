@@ -19,7 +19,7 @@ export function BottomNav() {
             to={to}
             activeOptions={{ exact: to === "/" }}
             className="flex flex-1 flex-col items-center gap-1 py-3 text-xs text-muted-foreground transition-colors hover:text-foreground"
-            activeProps={{ className: "!text-gold" }}
+            activeProps={{ className: "!text-primary" }}
           >
             <Icon className="size-5" />
             {label}

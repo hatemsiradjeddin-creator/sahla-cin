@@ -95,7 +95,7 @@ function MoviePage() {
 
         {movie.data?.synopsis && (
           <section className="mt-6">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">
               {t.movie.synopsis}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -105,7 +105,7 @@ function MoviePage() {
         )}
 
         <section className="mt-8">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">
             {t.movie.screenings}
           </h2>
 
@@ -129,7 +129,7 @@ function MoviePage() {
                     <Link
                       to="/cinema/$cinemaId"
                       params={{ cinemaId: first.hall.cinema.id }}
-                      className="text-xs text-gold underline-offset-4 hover:underline"
+                      className="text-xs text-primary underline-offset-4 hover:underline"
                     >
                       {t.cinema.map}
                     </Link>

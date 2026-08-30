@@ -146,12 +146,12 @@ function BookingPage() {
         )}
 
         <section className="mt-6">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">
             {t.booking.chooseSeats}
           </h2>
 
           <div className="mt-4 rounded-2xl border border-border bg-card p-4">
-            <div className="mx-auto mb-5 w-3/4 rounded-b-2xl border-b-2 border-gold/70 pb-1 text-center text-[10px] tracking-[0.3em] text-gold">
+            <div className="mx-auto mb-5 w-3/4 rounded-b-2xl border-b-2 border-primary/70 pb-1 text-center text-[10px] tracking-[0.3em] text-primary">
               {t.booking.screen}
             </div>
 
@@ -176,7 +176,7 @@ function BookingPage() {
                           isTaken
                             ? "cursor-not-allowed bg-muted/40 text-muted-foreground/40"
                             : isSel
-                              ? "bg-gold text-gold-foreground"
+                              ? "bg-primary text-primary-foreground"
                               : "bg-secondary text-muted-foreground hover:bg-primary hover:text-primary-foreground"
                         }`}
                       >
@@ -193,7 +193,7 @@ function BookingPage() {
                 <span className="size-3 rounded bg-secondary" /> Libre
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="size-3 rounded bg-gold" /> Sélectionné
+                <span className="size-3 rounded bg-primary" /> Sélectionné
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="size-3 rounded bg-muted/40" /> {t.booking.taken}
@@ -203,7 +203,7 @@ function BookingPage() {
         </section>
 
         <section className="mt-6">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">Paiement</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">Paiement</h2>
           <div className="mt-3 space-y-2">
             {paymentMethods.map((p) => (
               <button
@@ -211,14 +211,14 @@ function BookingPage() {
                 type="button"
                 onClick={() => setMethod(p.id)}
                 className={`flex w-full items-center justify-between rounded-xl border p-3 text-left transition-colors ${
-                  method === p.id ? "border-gold bg-gold/10" : "border-border bg-card hover:border-gold/40"
+                  method === p.id ? "border-primary bg-primary/10" : "border-border bg-card hover:border-primary/40"
                 }`}
               >
                 <span>
                   <span className="block text-sm font-medium">{p.label}</span>
                   <span className="block text-xs text-muted-foreground">{p.hint}</span>
                 </span>
-                {method === p.id && <CheckCircle2 className="size-5 text-gold" />}
+                {method === p.id && <CheckCircle2 className="size-5 text-primary" />}
               </button>
             ))}
           </div>
@@ -230,7 +230,7 @@ function BookingPage() {
           <span className="text-sm text-muted-foreground">
             {t.booking.selected}: {selected.length} × {price} {t.common.da}
           </span>
-          <span className="text-xl font-bold text-gold">
+          <span className="text-xl font-bold text-primary">
             {total} {t.common.da}
           </span>
         </div>

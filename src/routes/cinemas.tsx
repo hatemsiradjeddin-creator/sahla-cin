@@ -15,7 +15,7 @@ export const Route = createFileRoute("/cinemas")({
       {
         name: "description",
         content:
-          "Adresses, salles et programme des cinémas d'Alger, Oran et Constantine : Ibn Khaldoun, Ibn Zaydoun, Cosmos, TMV, Cinégold et plus.",
+          "Adresses, salles et programme des cinémas d'Alger, Oran et Constantine : Ibn Khaldoun, Ibn Zaydoun, Cosmos, TMV, Cinéprimary et plus.",
       },
       { property: "og:title", content: "Cinémas — BookCinéDZ" },
       { property: "og:description", content: "Tous les cinémas partenaires et leurs salles." },
@@ -45,11 +45,11 @@ function Cinemas() {
               key={c.id}
               to="/cinema/$cinemaId"
               params={{ cinemaId: c.id }}
-              className="block rounded-2xl border border-border bg-card p-4 transition-colors hover:border-gold/50"
+              className="block rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary/50"
             >
               <div className="flex items-start gap-3">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary">
-                  <Building2 className="size-5 text-gold" />
+                  <Building2 className="size-5 text-primary" />
                 </span>
                 <div className="min-w-0">
                   <h2 className="font-semibold">{c.name}</h2>
