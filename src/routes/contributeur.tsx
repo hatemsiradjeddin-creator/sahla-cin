@@ -164,7 +164,7 @@ function Contributor() {
             )}
 
             <section className="mt-5 rounded-2xl border border-border bg-card p-4">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">
                 {t.contributor.addScreening}
               </h2>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -245,7 +245,7 @@ function Contributor() {
 
             <section className="mt-6">
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-gold">
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">
                   {t.contributor.week}
                 </h2>
                 <Button size="sm" variant="outline" className="rounded-xl" onClick={submitAll}>

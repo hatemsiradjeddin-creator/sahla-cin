@@ -91,7 +91,7 @@ function CinemaPage() {
           )
         )}
 
-        <h2 className="mt-8 text-sm font-semibold uppercase tracking-wide text-gold">
+        <h2 className="mt-8 text-sm font-semibold uppercase tracking-wide text-primary">
           {t.movie.screenings}
         </h2>
         <div className="mt-3 space-y-3">
@@ -103,7 +103,7 @@ function CinemaPage() {
               key={s.id}
               to="/reserver/$screeningId"
               params={{ screeningId: s.id }}
-              className="flex items-center justify-between rounded-2xl border border-border bg-card p-4 transition-colors hover:border-gold/50"
+              className="flex items-center justify-between rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary/50"
             >
               <div className="min-w-0">
                 <p className="truncate font-medium">{s.movie.title}</p>
@@ -112,7 +112,7 @@ function CinemaPage() {
                   {t.languages[s.audio_language]} · {s.hall.name}
                 </p>
               </div>
-              <span className="shrink-0 font-semibold text-gold">
+              <span className="shrink-0 font-semibold text-primary">
                 {s.price} {t.common.da}
               </span>
             </Link>

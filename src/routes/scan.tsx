@@ -138,7 +138,7 @@ function ScanPage() {
               result.outcome === "ok"
                 ? "border-primary bg-primary/15"
                 : result.outcome === "used"
-                  ? "border-gold bg-gold/15"
+                  ? "border-primary bg-primary/15"
                   : "border-destructive bg-destructive/15"
             }`}
             role="status"
@@ -146,7 +146,7 @@ function ScanPage() {
             {result.outcome === "ok" ? (
               <CheckCircle2 className="size-6 text-primary" />
             ) : result.outcome === "used" ? (
-              <AlertTriangle className="size-6 text-gold" />
+              <AlertTriangle className="size-6 text-primary" />
             ) : (
               <XCircle className="size-6 text-destructive" />
             )}

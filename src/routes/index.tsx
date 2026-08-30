@@ -95,7 +95,7 @@ function Index() {
             }}
           >
             <SelectTrigger className="w-[150px] rounded-full border-border bg-card">
-              <MapPin className="size-4 text-gold" />
+              <MapPin className="size-4 text-primary" />
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -113,7 +113,7 @@ function Index() {
       <main className="mx-auto max-w-3xl px-4">
         <section className="hero-fade -mx-4 px-4 pb-4 pt-6">
           <h1 className="text-2xl font-bold tracking-tight">
-            {t.home.title} <span className="text-gold">en Algérie</span>
+            {t.home.title} <span className="text-primary">en Algérie</span>
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">{t.home.subtitle}</p>
           <div className="relative mt-4">
@@ -129,7 +129,7 @@ function Index() {
           <div className="mt-3">
             <Select value={cinemaId} onValueChange={setCinemaId}>
               <SelectTrigger className="rounded-full border-border bg-card">
-                <Film className="size-4 text-gold" />
+                <Film className="size-4 text-primary" />
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -157,7 +157,7 @@ function Index() {
               key={movie.id}
               to="/film/$movieId"
               params={{ movieId: movie.id }}
-              className="group flex gap-3 rounded-2xl border border-border bg-card p-3 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/50"
+              className="group flex gap-3 rounded-2xl border border-border bg-card p-3 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50"
             >
               <MoviePoster
                 src={movie.poster_url}
@@ -184,7 +184,7 @@ function Index() {
                       </Badge>
                     ))}
                 </div>
-                <p className="mt-2 text-xs font-medium text-gold">
+                <p className="mt-2 text-xs font-medium text-primary">
                   {count} séance{count > 1 ? "s" : ""} disponible{count > 1 ? "s" : ""}
                 </p>
               </div>

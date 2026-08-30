@@ -10,7 +10,7 @@ export function AppHeader({ right }: { right?: React.ReactNode }) {
             <Clapperboard className="size-5 text-primary-foreground" />
           </span>
           <span className="text-lg font-bold tracking-tight">
-            Book<span className="text-gold">Ciné</span>DZ
+            Book<span className="text-primary">Ciné</span>DZ
           </span>
         </Link>
         {right}

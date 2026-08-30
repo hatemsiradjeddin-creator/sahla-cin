@@ -127,7 +127,7 @@ function AuthPage() {
           </Button>
           <button
             type="button"
-            className="w-full text-center text-sm text-gold underline-offset-4 hover:underline"
+            className="w-full text-center text-sm text-primary underline-offset-4 hover:underline"
             onClick={() => setMode(mode === "login" ? "signup" : "login")}
           >
             {mode === "login" ? t.auth.noAccount : t.auth.haveAccount}

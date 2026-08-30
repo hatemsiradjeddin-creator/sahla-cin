@@ -80,7 +80,7 @@ function Account() {
             {isContributor && (
               <Button asChild variant="outline" className="w-full justify-start rounded-xl">
                 <Link to="/contributeur">
-                  <ClipboardList className="size-4 text-gold" />
+                  <ClipboardList className="size-4 text-primary" />
                   {t.contributor.title}
                 </Link>
               </Button>
@@ -88,7 +88,7 @@ function Account() {
             {isAdmin && (
               <Button asChild variant="outline" className="w-full justify-start rounded-xl">
                 <Link to="/admin">
-                  <ShieldCheck className="size-4 text-gold" />
+                  <ShieldCheck className="size-4 text-primary" />
                   {t.admin.title}
                 </Link>
               </Button>
@@ -96,7 +96,7 @@ function Account() {
             {isAgent && (
               <Button asChild variant="outline" className="w-full justify-start rounded-xl">
                 <Link to="/scan">
-                  <ScanLine className="size-4 text-gold" />
+                  <ScanLine className="size-4 text-primary" />
                   {t.scan.title}
                 </Link>
               </Button>
@@ -107,7 +107,7 @@ function Account() {
         <div className="mt-4">
           <Button asChild variant="outline" className="w-full justify-start rounded-xl">
             <a href="https://wa.me/213000000000" target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="size-4 text-gold" />
+              <MessageCircle className="size-4 text-primary" />
               Signaler une erreur sur WhatsApp
             </a>
           </Button>
@@ -117,7 +117,7 @@ function Account() {
           <AccordionItem value="about">
             <AccordionTrigger className="text-sm">
               <span className="flex items-center gap-2">
-                <Info className="size-4 text-gold" /> À propos
+                <Info className="size-4 text-primary" /> À propos
               </span>
             </AccordionTrigger>
             <AccordionContent className="text-sm text-muted-foreground">
@@ -129,7 +129,7 @@ function Account() {
           <AccordionItem value="legal" className="border-b-0">
             <AccordionTrigger className="text-sm">
               <span className="flex items-center gap-2">
-                <FileText className="size-4 text-gold" /> Mentions légales
+                <FileText className="size-4 text-primary" /> Mentions légales
               </span>
             </AccordionTrigger>
             <AccordionContent className="text-sm text-muted-foreground">

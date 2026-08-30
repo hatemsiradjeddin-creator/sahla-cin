@@ -45,11 +45,11 @@ function Cinemas() {
               key={c.id}
               to="/cinema/$cinemaId"
               params={{ cinemaId: c.id }}
-              className="block rounded-2xl border border-border bg-card p-4 transition-colors hover:border-gold/50"
+              className="block rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary/50"
             >
               <div className="flex items-start gap-3">
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary">
-                  <Building2 className="size-5 text-gold" />
+                  <Building2 className="size-5 text-primary" />
                 </span>
                 <div className="min-w-0">
                   <h2 className="font-semibold">{c.name}</h2>
