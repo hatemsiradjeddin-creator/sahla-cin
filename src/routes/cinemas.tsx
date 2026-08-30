@@ -15,7 +15,7 @@ export const Route = createFileRoute("/cinemas")({
       {
         name: "description",
         content:
-          "Adresses, salles et programme des cinémas d'Alger, Oran et Constantine : Ibn Khaldoun, Ibn Zaydoun, Cosmos, TMV, Cinéprimary et plus.",
+          "Adresses, salles et programme des cinémas d'Alger, Oran et Constantine : Ibn Khaldoun, Ibn Zaydoun, Cosmos, TMV, Cinégold et plus.",
       },
       { property: "og:title", content: "Cinémas — BookCinéDZ" },
       { property: "og:description", content: "Tous les cinémas partenaires et leurs salles." },
