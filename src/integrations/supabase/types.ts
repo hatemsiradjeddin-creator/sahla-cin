@@ -221,6 +221,7 @@ export type Database = {
           poster_url: string | null
           synopsis: string | null
           title: string
+          title_ar: string | null
         }
         Insert: {
           age_rating?: string | null
@@ -231,6 +232,7 @@ export type Database = {
           poster_url?: string | null
           synopsis?: string | null
           title: string
+          title_ar?: string | null
         }
         Update: {
           age_rating?: string | null
@@ -241,6 +243,7 @@ export type Database = {
           poster_url?: string | null
           synopsis?: string | null
           title?: string
+          title_ar?: string | null
         }
         Relationships: []
       }
