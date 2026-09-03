@@ -99,7 +99,7 @@ function BookingPage() {
     try {
       const payment = await processPayment({ method, amount: total });
       if (!payment.ok) throw new Error(payment.error);
-      await createBooking({
+      const booking = await createBooking({
         screeningId,
         seatIds: selected,
         totalAmount: total,
@@ -107,7 +107,7 @@ function BookingPage() {
       });
       await queryClient.invalidateQueries({ queryKey: ["taken", screeningId] });
       toast.success(t.booking.success);
-      navigate({ to: "/tickets" });
+      navigate({ to: "/tickets", search: { qr: booking.qrCode } });
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Erreur lors de la réservation");
       void taken.refetch();
