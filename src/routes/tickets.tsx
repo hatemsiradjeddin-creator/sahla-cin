@@ -21,9 +21,10 @@ import { fetchMyTickets } from "@/lib/api";
 import { t } from "@/lib/i18n";
 
 export const Route = createFileRoute("/tickets")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    qr: typeof search.qr === "string" ? search.qr : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { qr?: string } => {
+    const qr = search["qr"];
+    return typeof qr === "string" ? { qr } : {};
+  },
   head: () => ({
     meta: [
       { title: "Mes réservations et billets QR — BookCinéDZ" },
